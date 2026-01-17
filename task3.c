@@ -9,8 +9,9 @@
 int main() {
     mkfifo("fifo_A", 0666);
     mkfifo("fifo_B", 0666);
+    pid_t pid = fork();
 
-    if (fork() == 0) {
+    if (pid == 0) {
         int fd_A = open("fifo_A", O_RDONLY);
         int fd_B = open("fifo_B", O_WRONLY);
 
